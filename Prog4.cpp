@@ -33,6 +33,10 @@ int main()
 	}
 
 	//inputting the number of items on a train
+	/*
+	Precondition: t must be greater than 0
+	PostCondition: each train is assigned a number of items to be given 
+	*/
 	for (int i = 0; i < t; i++) {
 		int temp;
 		cin >> temp;
@@ -40,6 +44,10 @@ int main()
 	}
 
 	//inputting the number if items on a plane
+	/*
+	Precondition: p must be greater than 0
+	PostCondition: each plane is assigned a number of items to be given 
+	*/
 	for (int i = 0; i < p; i++) {
 		int temp;
 		cin >> temp;
@@ -47,6 +55,10 @@ int main()
 	}
 
 	//loading the stacks on the dock
+	/*
+	Precondition: items must not be 0
+	PostCondition: stacks are loaded onto the dock
+	*/
 	for (int i = 0; i < t; i++) {
 		stack<int> tempStack;
 		if (trainItemsToAdd >= 5) {
@@ -70,6 +82,10 @@ int main()
 	}
 
 	//calculating train time
+	/*
+	Precondition:  dockStacks must not be empty
+	PostCondition: time for trains to be loaded is calculated
+	*/
 	for (int i = 0; i < t; i++)
 		while (dockStacks[i].empty() != true) {
 			time += dockStacks[i].top() * 2;
@@ -79,14 +95,22 @@ int main()
 		}
 
 	//loading plane items
+	/*
+	Precondition: np must be greater than 0
+	PostCondition: items are loaded
+	*/
 	for (int i = 0; i < np; i++) {
 		int temp;
 		cin >> temp;
 		assemblyLine.push(temp);
 	}
-
 	time = 0;
+	
 	//calculating plane time
+	/*
+	Precondition: assemblyLine must not be empty
+	PostCondition: time for planes to be loaded is calculated
+	*/
 	while (assemblyLine.empty() != true) {
 		time += assemblyLine.front() * 10;
 		if (--itemsPerPlane[assemblyLine.front() - 1] == 0)
@@ -94,12 +118,20 @@ int main()
 		assemblyLine.pop();
 	}
 
-	//printing train
+	//printing time for each train
+	/*
+	Precondition: N/A
+	PostCondition: time for each train is printed
+	*/
 	for (int i = 0; i < t; i++)
 		cout << trainFinalTime[i] << " ";
-
 	cout << endl;
-	//printing plane
+	
+	//printing plane printing time for each plane
+	/*
+	Precondition: N/A
+	PostCondition: time for each plane is printed
+	*/
 	for (int i = 0; i < p; i++)
 		cout << planeFinalTime[i] << " ";
 
