@@ -9,7 +9,7 @@
 #include <stack>
 #include <vector>
 #include <queue>
-using namespace std;
+using namespace std;	//Simplicities sake.
 
 int main()
 {
@@ -23,6 +23,10 @@ int main()
 
 	int trainItemsToAdd = nt;
 
+	/*
+	Precondition: Initializes value placeholders for time
+	Postconditon: When the final time is found, finalTime will hold it.
+	*/
 	//temporary data for the time vectors
 	for (int i = 0; i < t; i++) {
 		trainFinalTime.push_back(0);
@@ -61,7 +65,7 @@ int main()
 	*/
 	for (int i = 0; i < t; i++) {
 		stack<int> tempStack;
-		if (trainItemsToAdd >= 5) {
+		if (trainItemsToAdd >= 5) {	// Either >= or > will work, it only changes who handles the stack.
 			for (int j = 0; j < 5; j++) {
 				int temp;
 				cin >> temp;
@@ -104,6 +108,8 @@ int main()
 		cin >> temp;
 		assemblyLine.push(temp);
 	}
+	
+	//we reuse the time variable here.
 	time = 0;
 	
 	//calculating plane time
@@ -135,6 +141,5 @@ int main()
 	for (int i = 0; i < p; i++)
 		cout << planeFinalTime[i] << " ";
 
-	system("pause");
 	return 0;
 }
